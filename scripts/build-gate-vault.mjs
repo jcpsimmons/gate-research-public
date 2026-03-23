@@ -8,8 +8,7 @@ const generatedTargets = [
   "01 Entities",
   "02 Themes",
   "03 Claims",
-  "04 Sources/Primary",
-  "04 Sources/Secondary",
+  "04 Sources",
   "05 Timelines",
   "Welcome.md",
 ];
@@ -36,11 +35,11 @@ function frontmatterBlock(fields) {
   for (const [key, value] of Object.entries(fields)) {
     if (value == null) continue;
     if (Array.isArray(value)) {
-      lines.push(`${key}:`);
       if (!value.length) {
-        lines.push("  []");
+        lines.push(`${key}: []`);
         continue;
       }
+      lines.push(`${key}:`);
       for (const item of value) lines.push(`  - ${yamlScalar(item)}`);
       continue;
     }
@@ -558,27 +557,6 @@ const entityNotes = [
     ],
     summary:
       "The [[California Mentally Gifted Minor Program]] is the clearest documented predecessor to California's later GATE branding. It matters because it grounds the state-level part of the story in real program history before the vault branches into claims about screening, enrichment, and remembered exercises.",
-  },
-  {
-    path: "01 Entities/Programs/California GATE.md",
-    title: "California GATE",
-    type: "program",
-    status: "seed",
-    tags: ["entity/program", "education/california"],
-    themes: ["[[Gifted Education]]", "[[California GATE]]"],
-    related: [
-      "[[California Mentally Gifted Minor Program]]",
-      "[[GATE Program]]",
-      "[[Torrance Tests]]",
-      "[[Gifted Identification Methods]]",
-    ],
-    claims: [
-      "[[Claim - GATE classroom recollections resemble consciousness-research protocols]]",
-      "[[Claim - No declassified document shows CIA operatives ran GATE classrooms]]",
-    ],
-    sources: ["[[Source - LAO 1988 GATE sunset review]]"],
-    summary:
-      "[[California GATE]] is the state-program node most likely to pull together policy history, testing methods, and anecdotal recollections in one graph neighborhood. It follows directly from the [[California Mentally Gifted Minor Program]] and becomes the obvious landing point for the classroom-memory claims layer.",
   },
   {
     path: "01 Entities/People/Stanley Krippner.md",
@@ -1819,13 +1797,21 @@ const graphConfig = {
 async function main() {
   await resetGeneratedOutput();
 
-  await Promise.allSettled(
+  const downloadResults = await Promise.allSettled(
     sourceCatalog.map(async (source) => {
       try {
         source.localFileResolved = await tryDownload(source);
       } catch {
         source.localFileResolved = "";
       }
+
+      if (source.localFileResolved) {
+        return `- ${source.title}: downloaded to ${source.localFileResolved}`;
+      }
+      if (source.downloadUrl) {
+        return `- ${source.title}: external link only`;
+      }
+      return `- ${source.title}: external link only`;
     }),
   );
 
@@ -1840,6 +1826,18 @@ async function main() {
   for (const indexNote of extraIndexes) {
     await writeVaultFile(indexNote.path, indexNote.content);
   }
+
+  const downloadReport = [
+    "# Download Report",
+    "",
+    ...downloadResults.map((result) =>
+      result.status === "fulfilled"
+        ? result.value
+        : `- download task failed: ${result.reason?.message ?? "unknown error"}`,
+    ),
+    "",
+  ].join("\n");
+  await writeVaultFile("04 Sources/Download Report.md", downloadReport);
 
   await writeVaultFile("05 Timelines/GATE Timeline.md", timeline);
 
