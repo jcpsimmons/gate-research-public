@@ -1,0 +1,38 @@
+# Download Report
+
+- Source - 1977 Senate MKULTRA Hearing: downloaded
+- Source - AIR evaluation of remote viewing (1995): skipped
+- Source - California GATE Sunset Review (1988): downloaded
+- Source - California MGM Brief History (1971): downloaded
+- Source - CIA chronology on Krippner China visit: skipped
+- Source - CIA ESP reference to Rhine: skipped
+- Source - CIA Remote Viewing Training Protocol: skipped
+- Source - Classroom recollection coverage (Yahoo News 2025): downloaded
+- Source - Congressional Record on Office of the Gifted and Talented (1975): failed (The operation was aborted due to timeout)
+- Source - Duke TIP history (Duke Today 2016): downloaded
+- Source - E. Paul Torrance at NAGC: downloaded
+- Source - Esalen Soviet exchange clipping: skipped
+- Source - Federal Register Grant Notice (1979): failed (The operation was aborted due to timeout)
+- Source - Ford Foundation and Congress for Cultural Freedom: failed (fetch failed)
+- Source - Gateway Process assessment: skipped
+- Source - George Leonard memorial: failed (fetch failed)
+- Source - Gregory Bateson biography: failed (fetch failed)
+- Source - Harold C. Lyon Jr. obituary: downloaded
+- Source - Harold C. Lyon Jr. West Point profile: failed (fetch failed)
+- Source - J. B. Rhine / Duke exhibit: downloaded
+- Source - Jacob Javits bill trail (Congress.gov): failed (403)
+- Source - Krippner bibliography 1960-1965: downloaded
+- Source - Krippner Grateful Dead pilot study: downloaded
+- Source - Krippner on Gifted Youth (ERIC ED015503): downloaded
+- Source - Marland Defense Service Cross record: failed (fetch failed)
+- Source - Marland Report (ERIC ED056243): downloaded
+- Source - MKULTRA Subproject 112: skipped
+- Source - MKULTRA Subproject 47: skipped
+- Source - Monroe Institute / Gateway memo: skipped
+- Source - PACMIRS history mentioning Marland: downloaded
+- Source - PAS review report (1986): skipped
+- Source - PAS screening report (1986): skipped
+- Source - Rockefeller Commission Report: downloaded
+- Source - SAIC report citing Maimonides (1991): skipped
+- Source - Sidney Marland obituary (NYT 1992): skipped
+- Source - SRI gifted individuals proposal: skipped
